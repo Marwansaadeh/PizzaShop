@@ -1,0 +1,63 @@
+﻿@model PizzaShop.Models.Kund
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+    <form asp-controller="Registration" asp-action="RegistarUser" method="post">
+
+        <div class="form-group">
+            <label asp-for="Namn"></label>
+            <br />
+            <input type="text" asp-for="Namn" /><br />
+            <span asp-validation-for="Namn"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Gatuadress"></label>
+            <br />
+            <input type="text" asp-for="Gatuadress" /><br />
+            <span asp-validation-for="Gatuadress"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Postnr"></label>
+            <br />
+            <input type="text" asp-for="Postnr" /><br />
+            <span asp-validation-for="Postnr"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Postort"></label>
+            <br />
+            <input type="text" asp-for="Postort" /><br />
+            <span asp-validation-for="Postort"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <br />
+            <input type="text" asp-for="Email" /><br />
+            <span asp-validation-for="Email"></span>
+            <span class="field-validation-error">@ViewBag.ErrorEmail</span>
+            
+        </div>
+        <div class="form-group">
+            <label asp-for="Telefon"></label>
+            <br />
+            <input type="text" asp-for="Telefon" /><br />
+            <span asp-validation-for="Telefon"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AnvandarNamn"></label>
+            <br />
+            <input type="text" asp-for="AnvandarNamn" /><br />
+            <span asp-validation-for="AnvandarNamn"></span>
+            <span class="field-validation-error">@ViewBag.ErrorUsername</span>
+
+        </div>
+        <div class="form-group">
+            <label asp-for="Losenord"></label>
+            <br />
+            <input type="password" asp-for="Losenord" /><br />
+            <span asp-validation-for="Losenord"></span>
+        </div>
+        <br />
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>

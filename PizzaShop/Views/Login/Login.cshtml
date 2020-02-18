@@ -1,0 +1,24 @@
+﻿@model PizzaShop.Models.Kund
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<form asp-controller="Login" asp-action="Login" method="post">
+
+      
+    <div class="form-group">
+        <label asp-for="AnvandarNamn"></label>
+        <br />
+        <input type="text" asp-for="AnvandarNamn" /><br />
+        <span asp-validation-for="AnvandarNamn"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Losenord"></label>
+        <br />
+        <input type="password" asp-for="Losenord" /><br />
+        <span asp-validation-for="Losenord"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

@@ -1,0 +1,45 @@
+﻿body {
+    margin-left: 0.92%;
+    margin-right: 0.92%;
+    width: 98%;
+}
+
+header {
+    background-color: #FFA100;
+    padding: 1%;
+}
+
+main {
+    margin: 1%;
+}
+
+#footer1 {
+    bottom: 0;
+    background-color: #FFA100 !important;
+    padding: 0.2%;
+    margin-top: 1%;
+    position: initial;
+    text-align: center;
+}
+
+#postarea {
+    margin-bottom: 10px;
+}
+
+btn btn-primary {
+    background-color: forestgreen;
+}
+
+span {
+    color: red;
+}
+.pricetag input[type="submit"] {
+    background: url(../images/glyphicons_190_circle_plus.png) 5px center no-repeat #F60;
+    color: #FFF;
+    padding: 5px;
+}
+.customizediv {
+    min-height: 75% !important;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}

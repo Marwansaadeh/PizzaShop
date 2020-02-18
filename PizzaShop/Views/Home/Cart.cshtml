@@ -1,0 +1,56 @@
+﻿@model List<PizzaShop.ViewModels.CartItem>
+@using PizzaShop.ViewModels;
+@using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
+
+@inject IHttpContextAccessor httpContextAccessor;
+@inject PizzaShop.IRepository.ICustomer _customer;
+
+@{List<CartItem> cartsitem = new List<CartItem>();
+    int totalorder = 0;
+}
+
+@if (string.IsNullOrEmpty(httpContextAccessor.HttpContext.Session.GetString("Cart")) || Model.Count == 0)
+{
+    <h3>Your shopping cart is empty</h3>
+}
+else
+{
+
+
+
+    @foreach (var x in Model)
+    {
+        cartsitem.Add(x);
+        <form asp-controller="Home" asp-action="Cart" asp-route-id="@x.Item.MatrattId">
+
+            @x.Item.MatrattNamn
+            @x.Item.Pris
+
+            <span>Amount: @x.Amount </span>
+            <input type="image" src="~/images/delete.png" />
+            <br />
+        </form>
+    }
+    totalorder = @Model.Sum(x => x.Item.Pris * x.Amount);
+    <span>total=@totalorder</span>
+
+    var cookieValueFromContext = httpContextAccessor.HttpContext.Request.Cookies["Customerlogin"];
+
+    var editedcustomer = _customer.GetAll().FirstOrDefault(x => x.AnvandarNamn == cookieValueFromContext);
+
+    var json = JsonConvert.SerializeObject(cartsitem);
+
+    <form asp-controller="Home" asp-action="SaveOrder" method="post">
+
+
+
+
+        <input type="submit" value="Send Order" asp-controller="Home" asp-action="SaveOrder"  asp-route-customerid="@editedcustomer.KundId" asp-route-total="@totalorder" asp-route-orderfood="@json" />
+
+
+    </form>
+
+
+
+}

@@ -1,0 +1,52 @@
+﻿@model PizzaShop.ViewModels.ViewFoodtypeAndDetials
+@inject PizzaShop.IRepository.IFood _food
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @foreach (var item in Model.Foodtypes)
+    {
+
+        @item.Beskrivning<span>:</span>
+
+        @foreach (var food in item.Matratt)
+        {
+<form asp-controller="Home" asp-action="Addproduct" asp-route-food="@food.MatrattId">
+
+    @food.MatrattNamn<span>,</span>
+    @food.Pris
+    @foreach (var foodproducts in _food.FoodProducts(food))
+    {
+        var x = _food.FoodProducts(food).Last();
+        if (x != foodproducts)
+        {
+            @foodproducts.ProduktNamn<span>, </span>
+        }
+        else
+        {
+            @foodproducts.ProduktNamn
+        }
+
+
+    }
+
+    <input type="number" min="1" max="10" value="1" asp-for="Amount">
+    <input type="image" src="~/images/glyphicons_190_circle_plus.png" />
+
+</form>
+            <br />
+        }
+
+
+        <br />
+
+    }
+
+</body>
+
+</html>
